@@ -1,19 +1,12 @@
 use std::collections::HashSet;
-use std::fs::File;
-use std::io::prelude::*;
 
-fn part1(input: &String) {
+fn part1(input: &str) {
   println!("Solving day 1 part 1");
 
-  //println!("{}", input);
-  let mut res = 0i64;
-  let input = input
+  let res : i64 = input
     .split("\n")
-    .map(|x| x.trim().parse::<i64>().unwrap_or(0));
-
-  for num in input {
-    res += num;
-  }
+    .map(|x| x.trim().parse::<i64>().unwrap_or(0))
+    .sum();
 
   println!("{:?}", res);
 }
@@ -27,9 +20,8 @@ fn in_vec(v: &Vec<i64>, n: i64) -> bool {
   return false;
 }
 
-fn part2(input: &String) {
+fn part2(input: &str) {
   println!("Solving day 1 part 2");
-  //println!("{}", input);
   let mut res = 0i64;
 
   let input = input
@@ -52,9 +44,7 @@ fn part2(input: &String) {
 }
 
 fn main() {
-  let mut file = File::open("input.in").unwrap();
-  let mut input = String::new();
-  file.read_to_string(&mut input).unwrap();
+  let input = include_str!("input.in");
 
   part1(&input);
   part2(&input);
